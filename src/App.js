@@ -1,25 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import {useState, useEffect} from "react";
+import Wayback from './comps/wayback';
+
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+  const [pvm, setPvm] = useState("");
+  const [website, setWebsite] = useState("naurunappula.fi");
+ 
+
+    return (
+      <div className="App">
+        <div><input type="text" /></div>
+        <Wayback />
+      </div>
+    );
+    
+  }
+
 
 export default App;
