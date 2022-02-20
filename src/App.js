@@ -15,10 +15,9 @@ function App() {
             <input id="website" type="text" value={website} onChange={e => setWebsite(e.target.value)}/>
           </div>
           <div>
-            <label htmlFor="timestamp">Find near date (DD.MM.YYYY) </label>
+            <label htmlFor="timestamp">Find date </label>
             <input id="timestamp" type="date" value={timestamp} onChange={e => setTimestamp(e.target.value)}/>
           </div>
-          
         <Wayback website = {website} timestamp = {timestamp} />
       </div>
       

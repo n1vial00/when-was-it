@@ -9,11 +9,12 @@ export default function Wayback(props)  {
     const [URL, setURL] = useState("")
     const [loading, setLoading] = useState(true);
     const [expWebsite, setExpWebsite] = useState("google.com");
+    const [expTimestamp, setExpTimestamp] = useState("");
 
     useEffect(() => {
-        let tYear = props.timestamp.slice(0,4);
-        let tMonth = props.timestamp.slice(5,7);
-        let tDay = props.timestamp.slice(8,10);
+        let tYear = expTimestamp.slice(0,4);
+        let tMonth = expTimestamp.slice(5,7);
+        let tDay = expTimestamp.slice(8,10);
         let tDate = tYear + tMonth + tDay; 
 
         let address = API + "url=" + expWebsite + "&timestamp=" +  tDate;
@@ -36,13 +37,14 @@ export default function Wayback(props)  {
     e.preventDefault();
     setExpWebsite(props.website);
     setLoading(true);
+    setExpTimestamp(props.timestamp);
     }
 
 
 
     if (loading) {
     return(
-        <div className="App">Loading...</div>)
+        <div>Loading...</div>)
     } else {
         
         return (
