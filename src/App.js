@@ -5,18 +5,26 @@ import Wayback from './comps/wayback';
 
 
 function App() {
-  const [pvm, setPvm] = useState("");
-  const [website, setWebsite] = useState("naurunappula.fi");
- 
+  const [website, setWebsite] = useState("google.com");
+  const [timestamp, setTimestamp] = useState("");
 
     return (
       <div className="App">
-        <div><input type="text" /></div>
-        <Wayback />
+          <div>
+            <label htmlFor="website">Website </label>
+            <input id="website" type="text" value={website} onChange={e => setWebsite(e.target.value)}/>
+          </div>
+          <div>
+            <label htmlFor="timestamp">Find near date (DD.MM.YYYY) </label>
+            <input id="timestamp" type="date" value={timestamp} onChange={e => setTimestamp(e.target.value)}/>
+          </div>
+          
+        <Wayback website = {website} timestamp = {timestamp} />
       </div>
+      
     );
     
-  }
+}
 
 
 export default App;

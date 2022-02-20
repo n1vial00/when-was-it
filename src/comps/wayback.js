@@ -4,13 +4,19 @@ import axios from "axios";
 const API = "http://archive.org/wayback/available?";
 
 
-export default function Wayback()  {
+export default function Wayback(props)  {
     const [date, setDate] = useState("");
     const [URL, setURL] = useState("")
-    const [website, setWebsite] = useState("google.com")
+    const [loading, setLoading] = useState(true);
+    const [expWebsite, setExpWebsite] = useState("google.com");
 
     useEffect(() => {
-        const address = API + "url=" + website;
+        let tYear = props.timestamp.slice(0,4);
+        let tMonth = props.timestamp.slice(5,7);
+        let tDay = props.timestamp.slice(8,10);
+        let tDate = tYear + tMonth + tDay; 
+
+        let address = API + "url=" + expWebsite + "&timestamp=" +  tDate;
 
         axios.get(address)
             .then((response) => {
@@ -22,23 +28,31 @@ export default function Wayback()  {
                 setURL(response.data.archived_snapshots.closest.url);
                 setLoading(false);
             }).catch  (error => {
-                alert("lol")
+                alert("Something went wrong. Please be patient.");
             });
-}, [])
-const [loading, setLoading] = useState(true);
+})
 
-
-if (loading) {
-  return(
-    <div className="App">Loading...</div>)
-} else {
-    
-    return (
-        <>
-        <div> Latest snapshot from { website } was saved { date } </div>
-        <div> It can be viewed through { URL } </div>
-        </>
-    )
+    function subHandle(e) {
+    e.preventDefault();
+    setExpWebsite(props.website);
+    setLoading(true);
     }
-}
 
+
+
+    if (loading) {
+    return(
+        <div className="App">Loading...</div>)
+    } else {
+        
+        return (
+            <>
+            <form onSubmit={subHandle}>
+            <button>Get data</button>
+            </form>
+            <div> Closest snapshot from { expWebsite } was saved { date } </div>
+            <div> It can be viewed through <a href={ URL }>{ URL }</a>  </div>
+            </>
+        )
+        }
+}
