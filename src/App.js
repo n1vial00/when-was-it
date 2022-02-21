@@ -10,6 +10,10 @@ function App() {
 
     return (
       <div className="App">
+        <div>
+        <h1>When Was It</h1>
+        <p>Go back in time and discover your favourite websites again from a very different era.</p>
+        </div>
           <div>
             <label htmlFor="website">Website </label>
             <input id="website" type="text" value={website} onChange={e => setWebsite(e.target.value)}/>

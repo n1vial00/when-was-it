@@ -1,10 +1,20 @@
 html {
-  background-color: black;
-  color: green;
+  background-color: #000000;
+  color: black;
 }
 
 .App {
   text-align: center;
-  font-size: 6em;
+  font-size: 2em;
+  background-color: #23EB1C;
+  margin: auto;
+  padding: 5px;
+  max-width: 90vw;
+  border: #DE9992 solid 5px;
+  min-height: 20vh;
 }
 
+h1 {
+  background-color: #DE9992;
+  margin: 0px;
+}

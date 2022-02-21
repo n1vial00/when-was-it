@@ -53,7 +53,8 @@ export default function Wayback(props)  {
             <button>Get data</button>
             </form>
             <div> Closest snapshot from { expWebsite } was saved { date } </div>
-            <div> It can be viewed through <a href={ URL }>{ URL }</a>  </div>
+            <div> It can be viewed through </div>
+            <div><a href={ URL }>{ URL }</a>  </div>
             </>
         )
         }
